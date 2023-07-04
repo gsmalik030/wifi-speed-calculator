@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_04_144716) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_04_150206) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,4 +22,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_04_144716) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "wifi_speeds", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "place_id", null: false
+    t.float "download_speed", null: false
+    t.string "download_units", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "index_wifi_speeds_on_place_id"
+  end
+
+  add_foreign_key "wifi_speeds", "places"
 end
