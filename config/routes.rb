@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
   get 'places/index'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  get "api//v1/places", to: "api/v1/places#index"
   root "places#index"
 end
